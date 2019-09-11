@@ -1,8 +1,11 @@
 <template>
-  <div class="hello">
+  <div class="content">
     <h1>{{ msg }}</h1>
-    <h1>Your cat num is {{ catNum }}</h1>
-    <h2>Ecosystem</h2>
+    <h4>
+      This diagnosis can judge your cat type.<br>
+      Also you can check best partner cat with you.<br>
+      Let's check and share which type is yours!
+    </h4>
     <ul>
       <li>
         <router-link to="/result">Go to result</router-link>
@@ -21,7 +24,6 @@ export default {
   data () {
     return {
       msg: 'Cat diagnosis',
-      catNum: 0,
       currentPage: 0,
       pointA: 0,
       pointB: 0,
@@ -37,6 +39,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.content {
+  padding: 5px;
+  min-height: 100%;
+}
 h1, h2 {
   font-weight: normal;
 }

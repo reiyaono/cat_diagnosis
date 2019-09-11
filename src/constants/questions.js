@@ -1,30 +1,30 @@
 export const QUESTIONS = [
   {
-    title: 'もし明日世界が終わるなら',
+    title: 'If world end tomorrow, what will you do?',
     A: ['hogea1', 1],
     B: ['hogeb1', 1],
     C: ['hogec1', 1]
   },
   {
-    title: 'もし１億円もらったら',
+    title: 'If you win 100 million JPY, what will you do?',
     A: ['hogea2', 1],
     B: ['hogeb2', 1],
     C: ['hogec2', 1]
   },
   {
-    title: 'もし10歳に戻れるなら',
+    title: 'What do you usually eat on your breakfast',
     A: ['hogea3', 1],
     B: ['hogeb3', 1],
     C: ['hogec3', 1]
   },
   {
-    title: 'もしもし',
+    title: 'If you live foreign country, where will you live?',
     A: ['hogea4', 1],
     B: ['hogeb4', 1],
     C: ['hogec4', 1]
   },
   {
-    title: 'もしテストテスト',
+    title: 'If you have cat, how many will you have?',
     A: ['hogea5', 1],
     B: ['hogeb5', 1],
     C: ['hogec5', 1]

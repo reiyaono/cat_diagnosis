@@ -1,9 +1,9 @@
 <template>
   <div>
     <h1>{{ title }}</h1>
-    <button class="questionButton" @click="submit('A')">{{ currentQuestion('A') }}</button>{{ $store.state.score_a }}<br>
-    <button class="questionButton" @click="submit('B')">{{ currentQuestion('B') }}</button>{{ $store.state.score_b }}<br>
-    <button class="questionButton" @click="submit('C')">{{ currentQuestion('C') }}</button>{{ $store.state.score_c }}
+      <div class="questionButton" @click="submit('A')">{{ currentQuestion('A') }}</div>{{ $store.state.score_a }}<br>
+      <div class="questionButton" @click="submit('B')">{{ currentQuestion('B') }}</div>{{ $store.state.score_b }}<br>
+      <div class="questionButton" @click="submit('C')">{{ currentQuestion('C') }}</div>{{ $store.state.score_c }}
   </div>
 </template>
 
@@ -26,7 +26,11 @@ export default {
       return QUESTIONS[this.currentPage][bet][0]
     },
     submit (bet) {
+      // this.$emit('show', false)
       this.currentPage += 1
+      // setTimeout(() => {
+      //   this.$emit('show', true)
+      // }, 1000)
       switch (bet) {
         case 'A':
           if (this.currentPage === 8) this.$router.push({ name: 'Result' })
@@ -50,8 +54,21 @@ export default {
   }
 }
 </script>
-<style lang="scss">
+<style scoped lang="scss">
 .questionButton {
-  margin: auto;
+  margin: 10px 0;
+  padding: 10px;
+  background-color:  #9099a3;
+  border-radius: 10px;
+}
+.questionButton:hover {
+  cursor: pointer;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .3s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 1;
+  transform: scale(1.2);
 }
 </style>
