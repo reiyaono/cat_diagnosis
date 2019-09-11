@@ -2,7 +2,7 @@
   <div id="app">
     <!-- <img src="./assets/logo.png"> -->
     <router-view/>
-    <common-footer />
+    <!-- <common-footer /> -->
   </div>
 </template>
 
