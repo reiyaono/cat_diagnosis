@@ -1,12 +1,14 @@
 <template>
-  <div class="hello">
-    <div>Score A: {{ $store.state.score_a }}</div>
-    <div>Score B: {{ $store.state.score_b }}</div>
-    <div>Score C: {{ $store.state.score_c }}</div>
-    <div>Score D: {{ $store.state.score_d }}</div>
-    <div>Score E: {{ $store.state.score_e }}</div>
-    <radar-score class="chart"></radar-score>
-    <router-link :to="{ name: 'HelloWorld' }">Restart</router-link>
+  <div class="result">
+    <div>Score A: {{ score.score_a }}</div>
+    <div>Score B: {{ score.score_b }}</div>
+    <div>Score C: {{ score.score_c }}</div>
+    <div>Score D: {{ score.score_d }}</div>
+    <div>Score E: {{ score.score_e }}</div>
+    <div class="chartContainer">
+      <radar-score class="chart"></radar-score>
+    </div>
+    <router-link :to="{ name: 'Top' }">Restart</router-link>
   </div>
 </template>
 
@@ -20,6 +22,9 @@ export default {
     }
   },
   computed: {
+    score () {
+      return this.$store.state.score
+    },
     calc_cat_type () {
       if (this.score_a + this.score_b > 5) {
         return this.cat_type[0]
@@ -35,6 +40,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.result {
+  padding-top: 20px;
+}
 h1, h2 {
   font-weight: normal;
 }
@@ -49,10 +57,12 @@ li {
 a {
   color: #42b983;
 }
-.chart {
-  max-width: 500px;
-  max-height: 500px;
+.chartContainer {
+  width: 300px;
+  height: 300px;
+  margin: 20px auto;
+  padding: 10px;
   border: 0.3px solid #2c3e50;
-  margin: 0 20px;
 }
+
 </style>

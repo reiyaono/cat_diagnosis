@@ -10,7 +10,7 @@ export default {
         datasets: [
           {
             label: 'cat',
-            data: [4, 2, 3, 4, 5],
+            data: [],
             backgroundColor: [
               'rgba(255, 99, 132, 0.2)',
               'rgba(54, 162, 235, 0.2)',
@@ -36,7 +36,13 @@ export default {
     }
   },
   mounted () {
+    this.data.datasets[0].data = [this.score.score_a, this.score.score_b, this.score.score_c, this.score.score_d, this.score.score_e]
     this.renderChart(this.data, this.options)
+  },
+  computed: {
+    score () {
+      return this.$store.state.score
+    }
   }
 }
 </script>

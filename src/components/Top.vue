@@ -20,7 +20,7 @@
 import Questions from '@/components/questions'
 export default {
   components: { Questions },
-  name: 'HelloWorld',
+  name: 'Top',
   data () {
     return {
       msg: 'Cat diagnosis',
@@ -40,7 +40,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .content {
-  padding: 5px;
+  padding: 5px 20px;
   min-height: 100%;
 }
 h1, h2 {
