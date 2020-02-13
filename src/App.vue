@@ -2,7 +2,7 @@
   <div id="app">
     <!-- <img src="./assets/logo.png"> -->
     <router-view/>
-    <!-- <common-footer /> -->
+    <common-footer />
   </div>
 </template>
 
@@ -21,6 +21,9 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 20px;
+  max-width: 640px;
+  margin: 0 auto 20px;
+  box-shadow: 0 0 7px rgba(0, 0, 0, 0.5);
+  min-height: 1000px;
 }
 </style>

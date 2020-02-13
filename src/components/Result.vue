@@ -1,9 +1,12 @@
 <template>
   <div class="hello">
-    <h1>Score A: {{ $store.state.score_a }}</h1>
-    <h1>Score B: {{ $store.state.score_b }}</h1>
-    <h1>Score C: {{ $store.state.score_c }}</h1>
+    <div>Score A: {{ $store.state.score_a }}</div>
+    <div>Score B: {{ $store.state.score_b }}</div>
+    <div>Score C: {{ $store.state.score_c }}</div>
+    <div>Score D: {{ $store.state.score_d }}</div>
+    <div>Score E: {{ $store.state.score_e }}</div>
     <radar-score class="chart"></radar-score>
+    <router-link :to="{ name: 'HelloWorld' }">Restart</router-link>
   </div>
 </template>
 
@@ -13,6 +16,18 @@ export default {
   components: { RadarScore },
   data () {
     return {
+      cat_type: [ 'aa', 'bb', 'cc', 'dd', 'ee', 'ff', 'gg', 'hh' ]
+    }
+  },
+  computed: {
+    calc_cat_type () {
+      if (this.score_a + this.score_b > 5) {
+        return this.cat_type[0]
+      } else if (this.score_a + this.score_c > 5) {
+        return this.cat_type[1]
+      } else {
+        return this.cat_type[2]
+      }
     }
   }
 }

@@ -15,7 +15,7 @@
 </script>
 <style scoped lang="scss">
 .footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   right: 0;
   left: 0;

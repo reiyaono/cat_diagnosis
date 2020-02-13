@@ -6,7 +6,7 @@ export default {
   data () {
     return {
       data: {
-        labels: ['cat', 'February', 'March', 'April', '魅力'],
+        labels: ['自由度', '野生度', '好奇心', '賢さ', '優しさ'],
         datasets: [
           {
             label: 'cat',
