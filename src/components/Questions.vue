@@ -10,6 +10,7 @@
 <script>
 import { QUESTIONS } from '@/constants/questions'
 import { SET } from '@/vuex/mutation-types'
+const SCORE_NAME = ['a', 'b', 'c', 'd', 'e']
 export default {
   data () {
     return {
@@ -17,11 +18,7 @@ export default {
     }
   },
   created () {
-    this.$store.commit(SET, { path: ['score', 'score_a'], value: 0 })
-    this.$store.commit(SET, { path: ['score', 'score_b'], value: 0 })
-    this.$store.commit(SET, { path: ['score', 'score_c'], value: 0 })
-    this.$store.commit(SET, { path: ['score', 'score_d'], value: 0 })
-    this.$store.commit(SET, { path: ['score', 'score_e'], value: 0 })
+    this.inithializeScore()
   },
   methods: {
     currentQuestion (bet) {
@@ -34,15 +31,15 @@ export default {
         case 'A':
           // this.commitScore(bet)
           this.$store.commit(SET, { path: ['score', 'score_a'], value: this.$store.state.score.score_a + 1 })
-          return 'A'
+          break
         case 'B':
           // this.commitScore(bet)
           this.$store.commit(SET, { path: ['score', 'score_b'], value: this.$store.state.score.score_b + 1 })
-          return 'B'
+          break
         case 'C':
           // this.commitScore(bet)
           this.$store.commit(SET, { path: ['score', 'score_c'], value: this.$store.state.score.score_c + 1 })
-          return 'C'
+          break
       }
     },
     commitScore (bet) {
@@ -51,6 +48,11 @@ export default {
       this.$store.commit(SET, { path: ['score', 'score_c'], value: this.$store.state.score_c + QUESTIONS[this.currentPage][bet][1][2] })
       this.$store.commit(SET, { path: ['score', 'score_d'], value: this.$store.state.score_c + QUESTIONS[this.currentPage][bet][1][3] })
       this.$store.commit(SET, { path: ['score', 'score_e'], value: this.$store.state.score_c + QUESTIONS[this.currentPage][bet][1][4] })
+    },
+    inithializeScore () {
+      SCORE_NAME.forEach(v => {
+        this.$store.commit(SET, { path: ['score', `score_${v}`], value: 0 })
+      })
     }
   },
   computed: {

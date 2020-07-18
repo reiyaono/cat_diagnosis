@@ -11,7 +11,7 @@
         <router-link to="/result">Go to result</router-link>
       </li>
       <br>
-      <questions></questions>
+      <questions />
     </ul>
   </div>
 </template>
