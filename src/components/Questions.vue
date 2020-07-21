@@ -1,9 +1,9 @@
 <template>
   <div>
     <h1>{{ title }}</h1>
-      <div class="questionButton" @click="submit('A')">{{ currentQuestion('A') }}</div>{{ $store.state.score.score_a }}<br>
-      <div class="questionButton" @click="submit('B')">{{ currentQuestion('B') }}</div>{{ $store.state.score.score_b }}<br>
-      <div class="questionButton" @click="submit('C')">{{ currentQuestion('C') }}</div>{{ $store.state.score.score_c }}
+     <div v-for="(answer, index) in answers" :key="index">
+       <div class="questionButton" @click="submit(index)">{{ answer }}</div>
+     </div>
   </div>
 </template>
 
@@ -24,30 +24,19 @@ export default {
     currentQuestion (bet) {
       return QUESTIONS[this.currentPage][bet][0]
     },
-    submit (bet) {
+    submit (i) {
+      if (this.currentPage === 7) this.$router.push({ name: 'Result' })
+      const targetAnswer = QUESTIONS[this.currentPage].score[i]
+      this.commitScore(targetAnswer)
       this.currentPage += 1
-      if (this.currentPage === 8) this.$router.push({ name: 'Result' })
-      switch (bet) {
-        case 'A':
-          // this.commitScore(bet)
-          this.$store.commit(SET, { path: ['score', 'score_a'], value: this.$store.state.score.score_a + 1 })
-          break
-        case 'B':
-          // this.commitScore(bet)
-          this.$store.commit(SET, { path: ['score', 'score_b'], value: this.$store.state.score.score_b + 1 })
-          break
-        case 'C':
-          // this.commitScore(bet)
-          this.$store.commit(SET, { path: ['score', 'score_c'], value: this.$store.state.score.score_c + 1 })
-          break
-      }
     },
-    commitScore (bet) {
-      this.$store.commit(SET, { path: ['score', 'score_a'], value: this.$store.state.score.score_c + QUESTIONS[this.currentPage][bet][1][0] })
-      this.$store.commit(SET, { path: ['score', 'score_b'], value: this.$store.state.score_c + QUESTIONS[this.currentPage][bet][1][1] })
-      this.$store.commit(SET, { path: ['score', 'score_c'], value: this.$store.state.score_c + QUESTIONS[this.currentPage][bet][1][2] })
-      this.$store.commit(SET, { path: ['score', 'score_d'], value: this.$store.state.score_c + QUESTIONS[this.currentPage][bet][1][3] })
-      this.$store.commit(SET, { path: ['score', 'score_e'], value: this.$store.state.score_c + QUESTIONS[this.currentPage][bet][1][4] })
+    commitScore (targetAnswer) {
+      // state名を回すようにしたい
+      ['a', 'b', 'c', 'd', 'e'].forEach((v, i) => {
+        console.log(this.$store.state.score[`score_${v}`])
+        console.log(targetAnswer[i])
+        this.$store.commit(SET, { path: ['score', `score_${v}`], value: this.$store.state.score[`score_${v}`] + targetAnswer[i] })
+      })
     },
     inithializeScore () {
       SCORE_NAME.forEach(v => {
@@ -58,6 +47,9 @@ export default {
   computed: {
     title () {
       return QUESTIONS[this.currentPage]['title']
+    },
+    answers () {
+      return QUESTIONS[this.currentPage]['answers']
     }
   }
 }
